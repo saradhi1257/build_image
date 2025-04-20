@@ -19,9 +19,21 @@
     <finalName>${project.artifactId}</finalName>
 
     <plugins>
+      <!-- Existing Jetty plugin -->
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
+      </plugin>
+
+      <!-- Add the maven-war-plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version> <!-- Use the latest compatible version -->
+        <configuration>
+          <!-- Optional: Configure output directory and other parameters -->
+          <webappDirectory>${project.build.directory}/webapp</webappDirectory>
+        </configuration>
       </plugin>
     </plugins>
   </build>
