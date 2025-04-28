@@ -27,4 +27,4 @@ jobs:
 
       - name: Download Artifact
         run: |
-          jfrog rt dl "my-repo/path/in/artifactory/my-artifact*.zip" "downloads/" --server-id=my-artifactory-server
+          jfrog rt dl "my_vir-alpine/2.png" "downloads/" --server-id=my-artifactory-server
