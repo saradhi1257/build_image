@@ -19,7 +19,7 @@ jobs:
 
       - name: Configure JFrog CLI with Access Token
         run: |
-          jfrog config add my-artifactory-server \
+          jf config add my-artifactory-server \
             --url=${{ secrets.JFROG_URL }} \
             --user=${{ secrets.JFROG_USER }} \
             --access-token=${{ secrets.JFROG_ACCESS_TOKEN }} \
