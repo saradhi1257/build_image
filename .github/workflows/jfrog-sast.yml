@@ -25,6 +25,10 @@ jobs:
             --access-token=${{ secrets.JFROG_ACCESS_TOKEN }} \
             --interactive=false
 
+      - name: Test Artifactory connection
+        run: |
+          jf rt ping --server-id=my-artifactory-server
+
       - name: Download Artifact
         run: |
           jf rt dl "my_vir-alpine/2.png" "downloads/" --server-id=my-artifactory-server
