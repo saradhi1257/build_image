@@ -16,6 +16,7 @@ jobs:
           curl -fL https://install-cli.jfrog.io | sh
           sudo mv jf /usr/local/bin/
 
+
       - name: Configure JFrog CLI with Access Token
         run: |
           jfrog config add my-artifactory-server \
