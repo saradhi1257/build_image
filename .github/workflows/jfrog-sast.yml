@@ -1,12 +1,10 @@
-name: Upload Artifact to JFrog
+name: Download Artifact from JFrog
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
-  upload-artifact:
+  download-artifact:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +24,6 @@ jobs:
             --access-token=${{ secrets.JFROG_ACCESS_TOKEN }} \
             --interactive=false
 
-      - name: Upload Artifact
+      - name: Download Artifact
         run: |
-          jfrog rt u "build/output/**" "my-repo/path/in/artifactory/" --server-id=my-artifactory-server
+          jfrog rt dl "my-repo/path/in/artifactory/my-artifact*.zip" "downloads/" --server-id=my-artifactory-server
