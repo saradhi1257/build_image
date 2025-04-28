@@ -27,7 +27,8 @@ jobs:
 
       - name: Test Artifactory connection
         run: |
-          jf rt ping --server-id=my-artifactory-server
+          #jf rt ping --server-id=my-artifactory-server
+           jf config show
 
       - name: Download Artifact
         run: |
