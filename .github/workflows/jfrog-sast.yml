@@ -27,4 +27,4 @@ jobs:
 
       - name: Download Artifact
         run: |
-          jf rt dl "my_vir-alpine/2.png" "downloads/" --server-id=my-artifactory-server
+          jf rt dl "/my_vir-alpine/2.png" "downloads/" --server-id=my-artifactory-server
