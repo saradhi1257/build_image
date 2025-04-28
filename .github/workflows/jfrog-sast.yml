@@ -1,0 +1,31 @@
+name: Upload Artifact to JFrog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install JFrog CLI
+        run: |
+          curl -fL https://install-cli.jfrog.io | sh
+          sudo mv jfrog /usr/local/bin/
+
+      - name: Configure JFrog CLI with Access Token
+        run: |
+          jfrog config add my-artifactory-server \
+            --url=${{ secrets.JFROG_URL }} \
+            --user=${{ secrets.JFROG_USER }} \
+            --access-token=${{ secrets.JFROG_ACCESS_TOKEN }} \
+            --interactive=false
+
+      - name: Upload Artifact
+        run: |
+          jfrog rt u "build/output/**" "my-repo/path/in/artifactory/" --server-id=my-artifactory-server
